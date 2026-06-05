@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>斯波索宾和声分析器</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Sposobin Harmony Lab</p>
+          <h1>斯波索宾和声分析器</h1>
+          <p class="lede">输入一段旋律，快速判断调性、音符类型与可用功能和声候选。</p>
+        </div>
+        <div class="status-panel" aria-label="系统状态">
+          <span class="pulse"></span>
+          <span>Harmony pipeline ready</span>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <form id="analysis-form" class="control-panel">
+          <div class="field-row">
+            <label for="signature">调号</label>
+            <select id="signature" name="signature">
+              <option value="0">0</option>
+              <option value="1#">1#</option>
+              <option value="2#">2#</option>
+              <option value="3#">3#</option>
+              <option value="4#">4#</option>
+              <option value="5#">5#</option>
+              <option value="1b">1b</option>
+              <option value="2b">2b</option>
+              <option value="3b">3b</option>
+              <option value="4b">4b</option>
+              <option value="5b">5b</option>
+            </select>
+          </div>
+
+          <div class="field-row">
+            <label for="final-note">终止音</label>
+            <select id="final-note" name="final-note">
+              <option>C</option>
+              <option>C#</option>
+              <option>Db</option>
+              <option>D</option>
+              <option>D#</option>
+              <option>Eb</option>
+              <option>E</option>
+              <option>F</option>
+              <option>F#</option>
+              <option>Gb</option>
+              <option>G</option>
+              <option>G#</option>
+              <option>Ab</option>
+              <option>A</option>
+              <option>A#</option>
+              <option>Bb</option>
+              <option>B</option>
+            </select>
+          </div>
+
+          <label class="melody-label" for="melody">旋律</label>
+          <textarea id="melody" name="melody" spellcheck="false">C4 D4 E4 F4 G4 A4 B4 C5</textarea>
+
+          <div class="actions">
+            <button type="submit">分析</button>
+            <button type="button" id="minor-demo">a 小调示例</button>
+          </div>
+        </form>
+
+        <section class="results" aria-live="polite">
+          <div class="summary">
+            <div>
+              <span class="label">调性</span>
+              <strong id="key-name">C Major</strong>
+            </div>
+            <div>
+              <span class="label">音符数</span>
+              <strong id="note-count">8</strong>
+            </div>
+            <div>
+              <span class="label">提示</span>
+              <strong id="hint">已完成分析</strong>
+            </div>
+          </div>
+
+          <div id="note-grid" class="note-grid"></div>
+          <div id="pipeline-log" class="pipeline-log"></div>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
